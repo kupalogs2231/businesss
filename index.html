@@ -616,10 +616,8 @@
   </footer>
 
   <script>
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Populate item select from menu
     const populateItemSelect = () => {
       const select = document.getElementById('item');
       const items = document.querySelectorAll('.category .item');
@@ -645,7 +643,6 @@
       });
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
       e.preventDefault();
       
@@ -663,7 +660,7 @@
 
       const preview = `Inquiry sent:\nName: ${name}\nContact: ${contact}\nItem: ${item}\nQuantity: ${qty}\nMessage: ${message || '[none]'}`;
       
-      setStatus('Thank you! Your inquiry has been recorded. (Demo only)');
+      setStatus('Thank you! Your inquiry has been recorded.');
       console.log(preview);
       
       setTimeout(() => form.reset(), 1400);
@@ -675,9 +672,9 @@
       el.style.color = isError ? '#dc2626' : 'var(--muted)';
     };
 
-    // Initialize
     document.addEventListener('DOMContentLoaded', populateItemSelect);
     document.getElementById('orderForm').addEventListener('submit', handleSubmit);
   </script>
 </body>
 </html>
+
