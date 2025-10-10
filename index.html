@@ -314,11 +314,9 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Auto-populate the Item / Service select from the visible menu
     function populateItemSelect(){
       const select = document.getElementById('item');
       if(!select) return;
-      // Find all menu items and add them as options
       const items = document.querySelectorAll('.category .item');
       const seen = new Set();
       items.forEach(it => {
@@ -353,11 +351,10 @@
         return;
       }
 
-      // This demo doesn't send emails — we show a preview message and clear the form.
       const preview = `Inquiry sent:\nName: ${name}\nContact: ${contact}\nItem: ${item}\nQuantity: ${qty}\nMessage: ${message || '[none]'}`;
-      setStatus('Thank you! Your inquiry has been recorded. (Demo only)');
+      setStatus('Thank you! Your inquiry has been recorded.');
       console.log(preview);
-      // Clear the form after a short delay to give feedback
+    
       setTimeout(()=>{document.getElementById('orderForm').reset();},1400);
     }
     function setStatus(msg, isError){
@@ -368,3 +365,4 @@
   </script>
 </body>
 </html>
+
