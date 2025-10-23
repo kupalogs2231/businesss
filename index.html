@@ -94,6 +94,31 @@
       border: 1px solid #eef2ff;
       color: var(--accent);
     }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--card);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .logout-btn {
+      background: #ef4444;
+      color: white;
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+    }
+
+    .logout-btn:hover {
+      opacity: 0.9;
+    }
     
     .hero {
       display: grid;
@@ -354,6 +379,10 @@
           <a href="#promo">Promo</a>
           <a href="#about">About / Contact</a>
           <a href="#order">Inquiry / Order</a>
+          <div class="user-info">
+            <span id="welcomeUser"></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
         </div>
       </nav>
       
@@ -616,6 +645,25 @@
   </footer>
 
   <script>
+    // Authentication Check
+    function checkAuth() {
+      const loggedInUser = sessionStorage.getItem('loggedInUser');
+      if (!loggedInUser) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      document.getElementById('welcomeUser').textContent = `Welcome, ${loggedInUser}!`;
+      return true;
+    }
+
+    function logout() {
+      sessionStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+
+    // Run auth check on page load
+    checkAuth();
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const populateItemSelect = () => {
@@ -677,4 +725,3 @@
   </script>
 </body>
 </html>
-
